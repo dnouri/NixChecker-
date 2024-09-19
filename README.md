@@ -10,12 +10,32 @@ The fact check will include a brief text of a summary and the facts
 presented in the article.  It will then continue to assess the main
 points in the article to the best of its ability, using a score.
 
+## Installation
+
+Create a virtual environment to get started:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Remember to activate the environment whenever you start a new
+terminal, or you get back to the project.
+
+You can also install project dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Pomodoros
 
-- [ ] Project outline 2024-09-19 10:45 CEST
-- [ ] Github repo
-- [ ] 
-- [ ]
+Times are in CEST
+
+- [x] 2024-09-19 10:45 Project outline
+  - [x] Github repo
+- [ ] 2024-09-19 11:30 What is Goose3?
+
 
 ## References and starting points
 
@@ -23,6 +43,25 @@ points in the article to the best of its ability, using a score.
 - [goose3](https://github.com/goose3/goose3)
 - [Twitter Discover](https://danielnouri.org/notes/2020/06/14/search-your-favorited-tweets-and-articles-with-twitter-discover/)
 - [Messages API](https://huggingface.co/docs/text-generation-inference/en/messages_api)
+
+### Goose3
+
+```pycon
+Python 3.11.2 (main, Aug 26 2024, 07:20:54) [GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from goose3 import Goose
+>>> g = Goose()
+>>> article = g.extract(url=url)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'url' is not defined
+>>> url = 'https://www.france24.com/en/middle-east/20240918-what-we-know-about-lebanon-s-exploding-pagers'
+>>> article = g.extract(url=url)
+>>> article
+<goose3.article.Article object at 0x7fd0bc7d84d0>
+>>> article.title
+'What we know about Lebanon’s exploding devices'
+```
 
 ### Developer stuff
 
