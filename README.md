@@ -1,4 +1,4 @@
-# 💻👾 [python/emacs/llm] NixChecker an online twitter fact checker bot 🧠📊
+# 💻👾 [python/emacs/llm] NixChecker an online twitter fact checker bot
 
 ## Abstract
 
@@ -28,14 +28,20 @@ You can also install project dependencies:
 pip install -r requirements.txt
 ```
 
-## Pomodoros
+## Usage
 
-Times are in CEST
+```bash
+python extract-article.py \
+    "https://www.france24.com/en/americas/20240918-federal-reserve-lowers-us-interest-rates-weeks-before-us-election"
+```
 
-- [x] 2024-09-19 10:45 Project outline
-  - [x] Github repo
-- [ ] 2024-09-19 11:30 What is Goose3?
+You can use the llm CLI tool to summarise the article offline like so:
 
+```bash
+pip install llm
+python extract-article.py https://magit.vc/ | \
+    llm -m Phi-3-mini-4k-instruct -s "Summarise this article and include why it's a great tool"
+```
 
 ## References and starting points
 
@@ -66,3 +72,15 @@ NameError: name 'url' is not defined
 ### Developer stuff
 
 - [Magit](https://magit.vc/)
+
+## Pomodoros
+
+We are streaming the creation of this tool on Twitch.  And here's a
+TODO list for that:
+
+Times are in CEST
+
+- [x] 2024-09-19 10:45 Project outline
+  - [x] Github repo
+- [x] 2024-09-19 11:30 Command line Goose 3
+- [x] 2024-09-19 11:55 Pipe newspaper article into `llm` tool
