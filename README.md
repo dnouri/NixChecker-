@@ -12,7 +12,14 @@ points in the article to the best of its ability, using a score.
 
 ## Installation
 
-Create a virtual environment to get started:
+Download the [source of this project NixChecker
+here](https://github.com/dnouri/NixChecker-/archive/refs/heads/main.zip).
+
+Unzip it and use a Terminal to navigate to the folder that you just
+unzipped.
+
+Create a virtual environment to get started.  This may work
+differently on Windows!
 
 ```bash
 python3 -m venv venv
