@@ -45,7 +45,7 @@ python extract-article.py \
 You can use the llm CLI tool to summarise the article offline like so:
 
 ```bash
-pip install llm
+pip install llm llm-gpt4all
 python extract-article.py https://magit.vc/ | \
     llm -m Phi-3-mini-4k-instruct -s "Summarise this article and include why it's a great tool"
 ```
