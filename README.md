@@ -45,9 +45,20 @@ python extract-article.py \
 You can use the llm CLI tool to summarise the article offline like so:
 
 ```bash
-pip install llm llm-gpt4all
+pip install llm llm-gpt4all click
 python extract-article.py https://magit.vc/ | \
-    llm -m Phi-3-mini-4k-instruct -s "Summarise this article and include why it's a great tool"
+    llm -m mistral-7b-instruct-v0 -s "Summarise this article and include why it's a great tool"
+```
+
+Or you can use the same tool to use an [llm
+template](https://llm.datasette.io/en/stable/templates.html) to
+perhaps extract structured information from the news article instead.
+The template file containing the prompt may then be located at
+`~/.config/io.datasette.llm/templates/extract-structured.yaml`:
+
+```bash
+python extract-article.py https://www.middleeasteye.net/news/mass-burial-unidentifiable-bodies-accounts-israeli-attacks-lebanon --n-words=1000 | \
+    llm -m mistral-7b-openorca -t extract-structured
 ```
 
 ## References and starting points
