@@ -1,24 +1,38 @@
 import sys
 
+import click
 from goose3 import Goose
 
 
-g = Goose()
-article = g.extract(url=sys.argv[1])
-article
+@click.command()
+@click.argument("url")
+@click.option("--n-words", default=-1)
+def main(url, n_words):
+    article = Goose().extract(url=url)
 
-print()
-print("# NixChecker checking in")
-print()
-print("Hey there you asked me to grab the article with the title:")
-print(article.title)
-print()
-print("meta_description:")
-print()
-print(article.meta_description)
-print()
-print("cleaned_text:")
-print()
-print(article.cleaned_text)
-print()
-print()
+    paragraphs = [
+        para.strip()
+        for para in article.cleaned_text.split("\n")
+        if para.strip()
+    ]
+    text_to_output = ""
+    for para in paragraphs:
+        new_text_to_output = "\n".join([text_to_output, "    " + para])
+        if n_words != -1 and len(new_text_to_output.split()) > n_words:
+            text_to_output += "\n    [...]"
+            break
+        text_to_output = new_text_to_output
+
+    publish_date = (
+            article.publish_datetime_utc.replace(tzinfo=None)
+            if article.publish_datetime_utc is not None
+            else None
+        )
+    click.echo(f"Article datetime in UTC and ISO format:\n    {publish_date}")
+    click.echo()
+    click.echo("Article contents:")
+    click.echo("    {}".format(text_to_output.strip()))
+
+
+if __name__ == '__main__':
+    main()
