@@ -19,17 +19,19 @@ Unzip it and use a Terminal to navigate to the folder that you just
 unzipped.
 
 Create a virtual environment to get started.  This may work
-differently on Windows!
+differently on Windows!  And then install the NixChecker package like
+so:
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+pip install -e .
 ```
 
 Remember to activate the environment whenever you start a new
 terminal, or you get back to the project.
 
-You can also install project dependencies:
+You can also install pinned project dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -38,7 +40,7 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-python extract-article.py \
+nixchecker extract-article \
     "https://www.france24.com/en/americas/20240918-federal-reserve-lowers-us-interest-rates-weeks-before-us-election"
 ```
 
@@ -46,7 +48,7 @@ You can use the llm CLI tool to summarise the article offline like so:
 
 ```bash
 pip install llm llm-gpt4all click
-python extract-article.py https://magit.vc/ | \
+nixchecker extract-article https://magit.vc/ | \
     llm -m mistral-7b-instruct-v0 -s "Summarise this article and include why it's a great tool"
 ```
 
