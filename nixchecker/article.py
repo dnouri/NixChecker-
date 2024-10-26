@@ -8,6 +8,8 @@ import goose3
 
 @dataclass
 class Extract:
+    title: str
+    url: str
     publish_date: datetime
     text: str
     article: goose3.Article
@@ -36,6 +38,8 @@ def extract(url, n_words) -> Extract:
         )
 
     return Extract(
+        title=article.title,
+        url=article.canonical_link,
         publish_date=publish_date,
         text=text.strip(),
         article=article,
