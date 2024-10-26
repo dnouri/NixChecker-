@@ -15,9 +15,10 @@ def extract_article(url, n_words):
     extract = article.extract(url, n_words)
     
 
-    click.echo(f"Article datetime in UTC and ISO format:\n    {extract.publish_date}")
-    click.echo()
-    click.echo("Article contents:")
+    click.echo(f"Title: {extract.title}")
+    click.echo(f"Date: {extract.publish_date}")
+    click.echo(f"URL: {extract.url}")
+    click.echo("Text:")
     click.echo(f"    {extract.text}")
 
 
